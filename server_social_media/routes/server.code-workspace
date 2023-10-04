@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "server",
+			"path": ".."
+		},
+		{
+			"name": "client",
+			"path": "../../Downloads/mern-social-media-master/client"
+		}
+	],
+	"settings": {}
+}

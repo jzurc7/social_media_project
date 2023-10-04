@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"name": "server",
+			"path": ".."
+		},
+		{
+			"path": "../../client"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
