@@ -33,29 +33,32 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
 
-/* FILE STORAGE */
+// Define how Multer should store uploaded files
 const storage = multer.diskStorage({
+    // Specify the destination directory for uploaded files
     destination: function (req, file, cb) {
         cb(null, "public/assets");
     },
+    // Defines the naming of uploaded files
     filename: function (req, file, cb) {
         cb(null, file.originalname);
     }
 });
 const upload = multer({ storage });
 
-/* ROUTES WITH FILES */
+// Routes with file uploads 
 app.post("/auth/register", upload.single("picture"), register);
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
-/* ROUTES */
+// Routes
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 
 
-/* MONGOOSE SETUP */
+// Defines a default port from envrionment variables
 const PORT = process.env.PORT || 6001;
+// Connect to MongoDB database using the connection string from envrionment variables
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -63,7 +66,7 @@ mongoose.connect(process.env.MONGO_URL, {
     .then(() => {
         app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
-        /* ADD DATA ONE TIME */
+        /* WARNING: ADD DATA ONE TIME */
         // User.insertMany(users);
         // Post.insertMany(posts);
     })
