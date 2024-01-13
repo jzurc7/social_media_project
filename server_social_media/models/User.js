@@ -55,7 +55,7 @@ const UserSchema = new mongoose.Schema(
 
         // Count of impressions 
         impressions: Number,
-    }, 
+    },
     // Option to automatically include timestamps for user posts
     { timestamps: true }
 );
