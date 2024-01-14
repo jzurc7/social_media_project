@@ -133,7 +133,7 @@ const UserWidget = ({ userId, picturePath }) => {
       {/* Social profiles section */}
       <Box p="1rem 0">
         <Typography fontSize="1rem" color={main} fontWeight="500" mb="1rem">
-          Social Profiles
+          Other Profiles:
         </Typography>
 
         {/* Each social profile entry */}
