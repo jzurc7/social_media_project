@@ -1,65 +1,55 @@
 import mongoose from "mongoose";
 
-// Defining the schema for 'User' 
+// Defining a schema for the User model
 const UserSchema = new mongoose.Schema(
-    {
-        // The first name of the user, with minimum and maximum length constraints
-        firstName: {
-            type: String,
-            required: true,
-            min: 2,
-            max: 50,
-        },
-
-        // The last name of the user, with minimum and maximum length constraints
-        lastName: {
-            type: String,
-            required: true,
-            min: 2,
-            max: 50,
-        },
-
-        // The email address of the user, which must be unique for all users
-        email: {
-            type: String,
-            required: true,
-            max: 50,
-            unique: true
-        },
-
-        // The user's encrypted password, with a minimum length constraint
-        password: {
-            type: String,
-            required: true,
-            min: 5,
-        },
-
-        // Path or URL to the user's profile picture; initialized as an empty string if not provided
-        picturePath: {
-            type: String,
-            default: "",
-        },
-
-        // An array storing user IDs of the user's friends
-        friends: {
-            type: Array,
-            default: [],
-        },
-
-        // Optional location data and occupation for the user
-        location: String,
-        occupation: String,
-
-        // Profile view count
-        viwedProfile: Number,
-
-        // Count of impressions 
-        impressions: Number,
+  {
+    // First name of the user, a required string between 2 to 50 characters
+    firstName: {
+      type: String,
+      required: true,
+      min: 2,
+      max: 50,
     },
-    // Option to automatically include timestamps for user posts
-    { timestamps: true }
+    // Last name of the user, a required string between 2 to 50 characters
+    lastName: {
+      type: String,
+      required: true,
+      min: 2,
+      max: 50,
+    },
+    // Email of the user, a required and unique string with a maximum length of 50 characters
+    email: {
+      type: String,
+      required: true,
+      max: 50,
+      unique: true,
+    },
+    // Password of the user, a required string with a minimum length of 5 characters
+    password: {
+      type: String,
+      required: true,
+      min: 5,
+    },
+    // Picture path for the user's profile picture, optional with a default value of an empty string
+    picturePath: {
+      type: String,
+      default: "",
+    },
+    // Friends list of the user, an array with a default value of an empty array
+    friends: {
+      type: Array,
+      default: [],
+    },
+    location: String,
+    occupation: String,
+    viewedProfile: Number,
+    impressions: Number,
+  },
+  { timestamps: true } // Enable automatic creation of createdAt and updatedAt fields
 );
 
-// Creating a Mongoose model named 'User' based on the schema.
-const User = mongoose.model("User", UserSchema)
+// Creating the User model from the defined schema
+const User = mongoose.model("User", UserSchema);
+
+// Exporting the User model
 export default User;

@@ -29,7 +29,7 @@ export const register = async(req,res) => {
         friends,
         location,
         occupation,
-        viwedProfile: Math.floor(Math.random() * 10000),
+        viewedProfile: Math.floor(Math.random() * 10000),
         impressions: Math.floor(Math.random() * 10000)
     });
     // Saves the newly created user instance to the database
